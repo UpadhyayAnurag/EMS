@@ -7,5 +7,3 @@ Key features:</br>
 ✅ Exception handling with custom error responses</br>
 ✅ Layered architecture following best practices</br>
 ✅ Database integration with JPA & Hibernate</br>
-
-Designed to seamlessly integrate with any frontend or third-party client, this system ensures efficient employee data management.
