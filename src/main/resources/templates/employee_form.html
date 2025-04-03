@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+</head>
+<body style="font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4;">
+
+<div style="width: 400px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); text-align: center;">
+    <h1 style="margin-bottom: 20px; color: #333;">Add or Update Employee</h1>
+
+    <form th:action="@{/employees/save}" th:object="${employee}" method="POST" style="display: flex; flex-direction: column; align-items: center;">
+
+        <!-- Hidden field for ID -->
+        <input type="hidden" th:field="*{id}" />
+
+        <!-- Input Fields -->
+        <input type="text" th:field="*{firstName}" placeholder="First Name"
+               style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+
+        <input type="text" th:field="*{lastName}" placeholder="Last Name"
+               style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+
+        <input type="email" th:field="*{email}" placeholder="Email"
+               style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+
+        <!-- Submit Button -->
+        <button type="submit"
+                style="width: 100%; padding: 12px; border: none; background: #007bff; color: white; font-size: 18px; border-radius: 5px; cursor: pointer; transition: 0.3s;">
+            Save
+        </button>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -4,11 +4,12 @@ import com.project.ems.entity.Employee;
 import com.project.ems.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/")
 public class EmployeeRestController {
 
@@ -16,9 +17,11 @@ public class EmployeeRestController {
     private EmployeeService employeeService;
 
     // LIST OF ALL EMPLOYEES
-    @GetMapping("/employees")
-    public List<Employee> getRecords(){
-        return employeeService.findAll();
+    @GetMapping("/employees/list")
+    public String getRecords(Model model){
+        List<Employee> lst = employeeService.findAll();
+        model.addAttribute("employees",lst);
+        return "employee_lst";
     }
 
     // FETCH EMPLOYEE BY ID
@@ -27,11 +30,18 @@ public class EmployeeRestController {
         return employeeService.empById(id);
     }
 
+    // SHOW FORM FOR ADD
+    @GetMapping("/employees/register")
+    public String showFormForAdd(Model model){
+        model.addAttribute("employee",new Employee());
+        return "employee_form";
+    }
+
     // ADD EMPLOYEE
-    @PostMapping("/employees")
-    public String addRecord(@RequestBody Employee theEmployee){
+    @PostMapping("/employees/save")
+    public String addRecord(@ModelAttribute("employee") Employee theEmployee){
         employeeService.save(theEmployee);
-        return "Record Added Successfully";
+        return "redirect:/employees/list";
     }
 
     // UPDATE EMPLOYEE RECORD
