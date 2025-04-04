@@ -45,14 +45,17 @@ public class EmployeeRestController {
     }
 
     // UPDATE EMPLOYEE RECORD
-    @PutMapping("/employees")
-    public Employee updateRecord(@RequestBody Employee theEmployee){
-        return employeeService.save(theEmployee);
+    @GetMapping("/employees/update")
+    public String updateRecord(@RequestParam("employeeId") int id,Model model){
+        Employee emp = employeeService.empById(id);
+        model.addAttribute("employee",emp);
+        return "employee_form";
     }
 
     // DELETE RECORD
-    @DeleteMapping("/employees/{id}")
-    public String deleteRecord(@PathVariable("id") Integer id){
-        return employeeService.deleteById(id);
+    @GetMapping("/employees/delete")
+    public String deleteRecord(@RequestParam("employeeId") Integer id){
+        employeeService.deleteById(id);
+        return "redirect:/employees/list";
     }
 }
