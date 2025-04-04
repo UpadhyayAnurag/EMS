@@ -1,6 +1,6 @@
-Employee Management System (EMS) - A Comprehensive Backend Solution
+Employee Management System (EMS)
 
-This repository contains the backend implementation of an Employee Management System (EMS), built using Spring Boot, JPA, and RESTful APIs. It provides a structured approach to managing employee records, including functionalities like CRUD operations, exception handling, and service-layer architecture.
+This repository contains the implementation of an Employee Management System (EMS), built using Spring Boot, Thymeleaf, HTML, CSS, JS, JPA, and RESTful APIs. It provides a structured approach to managing employee records, including functionalities like CRUD operations, exception handling, and service-layer architecture.
 
 Key features:</br>
 ✅ Employee creation, retrieval, updating, and deletion (CRUD)<br>
